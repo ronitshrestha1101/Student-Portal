@@ -2,7 +2,7 @@ services:
   - type: web
     name: student-portal
     env: node
-    buildCommand: npm run install:all && npm run build --prefix client
+    buildCommand: npm install --prefix server && npm install --prefix client --include=dev && npm run build --prefix client
     startCommand: npm start --prefix server
     envVars:
       - key: PORT
