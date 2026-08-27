@@ -290,17 +290,6 @@ const Login = () => {
             {isRegister ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
           </button>
         </div>
-
-        {!isRegister && (
-          <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            <p>Demo Login Accounts (Password details in README):</p>
-            <p style={{ marginTop: '4px' }}>
-              <strong>Admin:</strong> admin@university.edu <br />
-              <strong>Teacher:</strong> sarah.connor@university.edu <br />
-              <strong>Student:</strong> john.doe@student.edu
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );
