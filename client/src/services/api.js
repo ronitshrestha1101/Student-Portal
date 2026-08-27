@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : '/api';
 
 const apiFetch = async (endpoint, options = {}) => {
   const token = localStorage.getItem('token');

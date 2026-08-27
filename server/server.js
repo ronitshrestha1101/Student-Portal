@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
@@ -14,6 +16,9 @@ import examRoutes from './routes/examRoutes.js';
 import announcementRoutes from './routes/announcementRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -35,9 +40,16 @@ app.use('/api/announcements', announcementRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/tasks', taskRoutes);
 
-app.get('/', (req, res) => {
-  res.send('Student Information Management System API is running...');
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('Student Information Management System API is running...');
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
