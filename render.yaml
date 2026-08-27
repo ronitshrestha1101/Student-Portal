@@ -15,13 +15,12 @@ services:
       - key: NODE_ENV
         value: production
 
-  - type: web
+  - type: static
     name: student-portal-client
-    env: static
     rootDir: client
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     routes:
       - type: rewrite
-        fromPath: /*
-        toPath: /index.html
+        source: /*
+        destination: /index.html
