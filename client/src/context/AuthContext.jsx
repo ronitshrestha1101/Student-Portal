@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Load user session on mount
   useEffect(() => {
     const bootstrapAuth = async () => {
       const token = localStorage.getItem('token');
@@ -48,6 +47,22 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const register = async (userData) => {
+    setLoading(true);
+    try {
+      const data = await api.auth.register(userData);
+      localStorage.setItem('token', data.token);
+      setUser(data.user);
+      setProfile(data.profile);
+      return data;
+    } catch (error) {
+      logout();
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
@@ -64,7 +79,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, profile, loading, login, logout, refreshProfile }}>
+    <AuthContext.Provider value={{ user, profile, loading, login, register, logout, refreshProfile }}>
       {children}
     </AuthContext.Provider>
   );

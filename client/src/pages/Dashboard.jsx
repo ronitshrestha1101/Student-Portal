@@ -17,6 +17,7 @@ import {
 import Alert from '../components/Alert';
 import Skeleton from '../components/Skeleton';
 import { Link } from 'react-router-dom';
+import TasksSection from '../components/TasksSection';
 
 const Dashboard = () => {
   const { user, profile } = useAuth();
@@ -240,6 +241,7 @@ const Dashboard = () => {
                 </table>
               </div>
             </div>
+            <TasksSection />
           </div>
 
           {/* Right Sidebar Column */}
@@ -401,6 +403,7 @@ const Dashboard = () => {
                 </table>
               </div>
             </div>
+            <TasksSection />
           </div>
 
           {/* Sidebar Column */}
@@ -520,6 +523,7 @@ const Dashboard = () => {
                 </table>
               </div>
             </div>
+            <TasksSection />
           </div>
 
           {/* Sidebar Column */}

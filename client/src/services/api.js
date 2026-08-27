@@ -25,22 +25,24 @@ const apiFetch = async (endpoint, options = {}) => {
 };
 
 export const api = {
-  // Auth
   auth: {
     login: (email, password) =>
       apiFetch('/auth/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
       }),
+    register: (userData) =>
+      apiFetch('/auth/register', {
+        method: 'POST',
+        body: JSON.stringify(userData),
+      }),
     me: () => apiFetch('/auth/me'),
   },
 
-  // Admin Dashboard Stats
   admin: {
     getStats: () => apiFetch('/admin/dashboard-stats'),
   },
 
-  // Students
   students: {
     list: (params = {}) => {
       const query = new URLSearchParams();
@@ -77,7 +79,6 @@ export const api = {
       }),
   },
 
-  // Teachers
   teachers: {
     list: (params = {}) => {
       const query = new URLSearchParams();
@@ -105,7 +106,6 @@ export const api = {
       }),
   },
 
-  // Departments
   departments: {
     list: () => apiFetch('/departments'),
     get: (id) => apiFetch(`/departments/${id}`),
@@ -125,7 +125,6 @@ export const api = {
       }),
   },
 
-  // Courses
   courses: {
     list: (params = {}) => {
       const query = new URLSearchParams();
@@ -153,7 +152,6 @@ export const api = {
       }),
   },
 
-  // Attendance
   attendance: {
     getCourseRoster: (courseId, date) =>
       apiFetch(`/attendance/course/${courseId}?date=${date}`),
@@ -165,7 +163,6 @@ export const api = {
     getMyAttendance: () => apiFetch('/attendance/my-attendance'),
   },
 
-  // Examinations and Results
   exams: {
     list: (params = {}) => {
       const query = new URLSearchParams();
@@ -205,7 +202,6 @@ export const api = {
     getMyResults: () => apiFetch('/exams/my-results'),
   },
 
-  // Announcements
   announcements: {
     list: () => apiFetch('/announcements'),
     listAdmin: () => apiFetch('/announcements/admin'),
@@ -221,6 +217,24 @@ export const api = {
       }),
     delete: (id) =>
       apiFetch(`/announcements/${id}`, {
+        method: 'DELETE',
+      }),
+  },
+
+  tasks: {
+    list: () => apiFetch('/tasks'),
+    create: (data) =>
+      apiFetch('/tasks', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }),
+    update: (id, data) =>
+      apiFetch(`/tasks/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(data),
+      }),
+    delete: (id) =>
+      apiFetch(`/tasks/${id}`, {
         method: 'DELETE',
       }),
   },
