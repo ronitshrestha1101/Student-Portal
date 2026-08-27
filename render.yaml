@@ -23,5 +23,5 @@ services:
     staticPublishPath: dist
     routes:
       - type: rewrite
-        path: /*
-        destination: /index.html
+        fromPath: /*
+        toPath: /index.html
