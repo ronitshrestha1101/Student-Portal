@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: student-portal-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm start --prefix server
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: NODE_ENV
+        value: production
+
+  - type: web
+    name: student-portal-client
+    env: static
+    buildCommand: npm install && npm run build --prefix client
+    staticPublishPath: client/dist
+    routes:
+      - type: rewrite
+        path: /*
+        destination: /index.html

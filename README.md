@@ -116,3 +116,7 @@ All endpoints are prefixed with `/api`.
   - `GET /announcements` - Gets active announcements for the current user.
   - `GET /announcements/admin` - Gets all announcements (for admins).
   - `POST /announcements` | `PUT /announcements/:id` | `DELETE /announcements/:id` - Manages announcements.
+
+## Deployment
+
+A `render.yaml` file is placed in the root folder of the repository. You can use it to deploy the API and frontend directly on Render.com using their Blueprints feature.
