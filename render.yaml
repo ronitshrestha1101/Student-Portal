@@ -2,8 +2,9 @@ services:
   - type: web
     name: student-portal-api
     env: node
+    rootDir: server
     buildCommand: npm install
-    startCommand: npm start --prefix server
+    startCommand: node server.js
     envVars:
       - key: PORT
         value: 5000
@@ -17,8 +18,9 @@ services:
   - type: web
     name: student-portal-client
     env: static
-    buildCommand: npm install && npm run build --prefix client
-    staticPublishPath: client/dist
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
     routes:
       - type: rewrite
         path: /*
