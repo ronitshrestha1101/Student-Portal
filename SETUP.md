@@ -17,8 +17,8 @@ You need to have Node.js and MongoDB installed on your computer.
 Create a file named .env in the server folder and put the following variables in it:
 
 PORT=5000
-MONGO_URI=mongodb+srv://ronitshrestha1101_db_user:898EYEcetVfrjhjD@cluster0.91qri9l.mongodb.net/todo_db?appName=Cluster0
-MONGODB_URI=mongodb+srv://ronitshrestha1101_db_user:898EYEcetVfrjhjD@cluster0.91qri9l.mongodb.net/todo_db?appName=Cluster0
+MONGO_URI=mongodb+srv://ronitshrestha1101_db_user:898EYEcetVfrjhjD@cluster0.bpjyaoe.mongodb.net/todo_db?appName=Cluster0
+MONGODB_URI=mongodb+srv://ronitshrestha1101_db_user:898EYEcetVfrjhjD@cluster0.bpjyaoe.mongodb.net/todo_db?appName=Cluster0
 JWT_SECRET=supersecretuniversitykey12345
 NODE_ENV=development
 
